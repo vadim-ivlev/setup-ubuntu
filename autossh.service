@@ -1,0 +1,16 @@
+# Create a file named /etc/systemd/system/autossh.service.
+# Then run the following command as root:
+# systemctl enable autossh.service
+
+
+
+
+[Unit]
+Description=Auto Reverse SSH to work comp
+Requires=systemd-networkd-wait-online.service
+After=systemd-networkd-wait-online.service
+[Service]
+ExecStart=/usr/bin/autossh -f -N -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -R 5000:localhost:22 -F /home/vadim/.ssh/config rg
+
+[Install]
+WantedBy=multi-user.target
