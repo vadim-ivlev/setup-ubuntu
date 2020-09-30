@@ -1,0 +1,38 @@
+#cloud-config
+package_upgrade: true
+packages:
+  - docker.io
+  # - fish
+  # - mc
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDB3xdd3THzfCqN86GGgSoAvI5k6dtzUKhq0QzF1FR1QQ4bIRqyszJdmi0WQyL0QyRdI5ewvYY3q4lJBAI0D1ELqqQJ/2SRxlF6w85dP7fIdQ1DfrSW7EC+ZaFnafN8Mw4wDDksqPEEuc1yJ2slFQYL94Fxv0c9yQgBxnlrFmXkCY84UmIlTtZLricES+MWw0XD6niN9CycpizZqhXSqMjw6/BgtjJtlyI6ZPNIOmRSSe/SzRo2IBNlUj3GHrgaRV/B81muaOANDJPKoB0HZdToA7MFumGC+JjOvN/aKv0BJ/xW9YkT3A2Q/UstrpQXLigKU3mXiN4kT9KPop5XGzkD vadim@vadim-tc
+
+# write_files:
+#   - owner: vadimivlev:vadimivlev
+#     path: /home/vadimivlev/text-processor/docker-compose.yml
+#     content: |
+#       version: "3"
+#       services: 
+#         text-processor-worker:
+#           image: vadimivlev/text-processor-worker:latest
+#           container_name: text-processor-worker
+#           restart: unless-stopped
+runcmd:
+  #   - sudo apt install docker.io 
+  # - sudo apt-get install -y fish mc
+  - sudo systemctl start docker
+  - sudo systemctl enable docker
+  # docker post install. running without sudo.
+  # Create the docker group.
+  - sudo groupadd docker
+  # Add your user to the docker group.
+  - sudo usermod -aG docker vadimivlev
+  # Install docker-compose
+  # 1. Run this command to download the current stable release of Docker Compose:
+  - sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  # 2. Apply executable permissions to the binary:
+  - sudo chmod +x /usr/local/bin/docker-compose
+  # - cd "/home/vadimivlev/text-processor"
+  # - docker-compose up -d
+  - docker run -d --name=worker --restart=unless-stopped vadimivlev/text-processor-worker:latest
+
