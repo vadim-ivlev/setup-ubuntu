@@ -24,7 +24,7 @@ runcmd:
   - sudo systemctl enable docker
   # docker post install. running without sudo.
   # Create the docker group.
-  - c
+  - sudo groupadd docker
   # Add your user to the docker group.
   - sudo usermod -aG docker vadimivlev
   # Install docker-compose
