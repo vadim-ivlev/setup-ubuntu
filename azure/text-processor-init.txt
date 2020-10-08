@@ -24,7 +24,7 @@ runcmd:
   - sudo systemctl enable docker
   # docker post install. running without sudo.
   # Create the docker group.
-  - sudo groupadd docker
+  - c
   # Add your user to the docker group.
   - sudo usermod -aG docker vadimivlev
   # Install docker-compose
@@ -34,5 +34,8 @@ runcmd:
   - sudo chmod +x /usr/local/bin/docker-compose
   # - cd "/home/vadimivlev/text-processor"
   # - docker-compose up -d
-  - docker run -d --name=worker --restart=unless-stopped vadimivlev/text-processor-worker:latest
+  # - docker run -d --name=worker --restart=unless-stopped vadimivlev/text-processor-worker:latest
+  - sudo apt install mc -y
+  - sudo apt install fish -y
+
 

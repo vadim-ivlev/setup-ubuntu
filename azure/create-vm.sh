@@ -12,7 +12,7 @@ date
 # az account list-locations -o table 
 
 # VM sizes
-# az vm list-sizes
+# az vm list-sizes --location northeurope -o table
 
 # Images
 # az vm image list --output table
@@ -29,10 +29,12 @@ az vm create \
     --resource-group group0 \
     --name machine0 \
     --public-ip-address-dns-name textproc0 \
-    --size Standard_DS1_v2 \
     --image Canonical:UbuntuServer:18.04-LTS:latest \
     --custom-data text-processor-init.txt \
     --admin-username vadimivlev \
+    --size Standard_D4s_v3 \
+    # --size Standard_F4s_v2 \
+    # --size Standard_DS1_v2 \
     # --admin-password Qq!123456789 \
     # --os-disk-size-gb 10
 
