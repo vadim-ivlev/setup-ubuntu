@@ -56,17 +56,18 @@ az vm create \
 # az vm show --name machine0 --resource-group group0
 
 
-#  Delete VM without confirmation
-# az vm delete -g group0 -n machine0 --yes
-
 # Stoping.
 # It will continue to be billed. To deallocate a VM, run: az vm deallocate.
 # az vm stop -n machine0 -g group0
 
 # Deallocate
-# az vm start -n machine0 -g group0
+# az vm deallocate -n machine0 -g group0
 
 # Starting
 # az vm start -n machine0 -g group0
+
+
+#  Delete VM without confirmation
+# az vm delete -g group0 -n machine0 --yes
 
 date
