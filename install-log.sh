@@ -31,6 +31,9 @@ git config --global alias.d difftool
 
 sudo apt install fzf
 
+sudo apt install -y litecli
+sudo apt install -y pgcli
+
 # meld
 # golang
 # foliate
