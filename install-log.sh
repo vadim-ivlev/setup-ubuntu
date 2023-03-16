@@ -33,6 +33,21 @@ sudo apt install fzf
 
 sudo apt install -y litecli
 sudo apt install -y pgcli
+sudo apt  install -y ripgrep
+
+# smarter cat with syntax highlighting
+sudo apt install -y bat
+# might need to
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
+
+# 
+sudo apt install -y fd-find
+# might need to
+mkdir -p ~/.local/bin
+ln -s $(which fdfind) ~/.local/bin/fd
+
+# https://github.com/PatrickF1/fzf.fish
 
 # meld
 # golang
