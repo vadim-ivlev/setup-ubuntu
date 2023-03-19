@@ -35,6 +35,10 @@ sudo apt install -y litecli
 sudo apt install -y pgcli
 sudo apt  install -y ripgrep
 
+sudo add-apt-repository ppa:appimagelauncher-team/stable
+sudo apt-get -y update
+sudo apt-get -y install appimagelauncher
+
 # smarter cat with syntax highlighting
 sudo apt install -y bat
 # might need to
